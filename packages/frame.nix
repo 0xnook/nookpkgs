@@ -1,25 +1,22 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ lib, fetchurl, appimageTools }:
 
 let
-  pname = "frame";
-  version = "0.5.0-beta.18";
-  name = "${pname}-${version}";
-  src = pkgs.fetchurl {
+  pname = "framesh";
+  version = "0.5.0-beta.20";
+  src = fetchurl {
     url = "https://github.com/floating/frame/releases/download/v${version}/Frame-${version}.AppImage";
-    sha256 = "sha256-4bS5lGksSqJ60t9k8ihd3oLYNquTYrDpiNRUtEZHbXw=";
+    sha256 = "sha256-4PU3f5e9NJYnP49nVtCjbGXxWJDCJIArzuaLsWB3Cx0=";
   };
-  
-  appimageContents = pkgs.appimageTools.extractType2 {
-    inherit name src;
+
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
   };
 in
-  pkgs.appimageTools.wrapType2 { 
-    inherit name src;
-
-
+appimageTools.wrapType2 {
+  inherit pname version src;
 
   extraInstallCommands = ''
-    ln -s $out/bin/${name} $out/bin/${pname}
+    ln -s $out/bin/${pname}-${version} $out/bin/${pname}
     install -m 444 -D ${appimageContents}/frame.desktop $out/share/applications/frame.desktop
     install -m 444 -D ${appimageContents}/frame.png \
       $out/share/icons/hicolor/512x512/apps/frame.png
@@ -27,5 +24,13 @@ in
       --replace 'Exec=AppRun' 'Exec=${pname}'
   '';
 
-  extraPkgs = pkgs: with pkgs; [ ];
+  meta = {
+    description = "Native web3 interface that lets you sign data, securely manage accounts and transparently interact with dapps via web3 protocols like Ethereum and IPFS";
+    homepage = "https://frame.sh/";
+    downloadPage = "https://github.com/floating/frame/releases";
+    license = lib.licenses.gpl3Only;
+    platforms = [ "x86_64-linux" ];
+    maintainers = with lib.maintainers; [ nook ];
+  };
 }
+
