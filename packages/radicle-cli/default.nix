@@ -10,21 +10,23 @@ rustPlatform.buildRustPackage rec {
   # };
 
   src = fetchFromGitHub {
-    owner = "radicle-dev";
+    owner = "0xnook";
     repo = pname;
-    rev = "v${version}";
-    sha256 = "sha256-LS6zYpMg0LanRL2M8ioGG8Ys07TPT/3hP7geEGehwxg=";
+    rev = "6c916ec589bb18c067c30fbaf82c9b88fef60bbc";
+    # sha256 = "sha256-LS6zYpMg0LanRL2M8ioGG8Ys07TPT/3hP7geEGehwxg=";
+    sha256 = "sha256-O+wrn0oKre/WUFQpZ+Oxya0iRxZO80r8WfvWVRpsmP4=";
+    # sha256 = lib.fakeHash;
   };
 
   # need cargoPatches since patches doesn't work with buildRustPackage
   # patches = [ ./diff-patch.patch ];
-  cargoPatches = [ ./diff-patch.patch ];
+  # cargoPatches = [ ./diff-patch.patch ];
 
   postPatch = ''
     cat auth/src/lib.rs
   '';
 
-  cargoHash = "sha256-o7ahnV7NnvzKxXb7HdNqKcxekshOtKanYKb0Sy15mhs=";
+  cargoHash = "sha256-PI3Ecn0QhWeRPSm8HUFK+tm4bqlehvIhjnckVCa6hh4=";
   # cargoHash = lib.fakeHash;
 
   nativeBuildInputs = [
