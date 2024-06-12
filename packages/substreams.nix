@@ -24,6 +24,10 @@ buildGoModule {
 
   vendorHash = "sha256-fpHv2RRW3wXsxUiferjZ5c31dQPGd/8gqGDXr/Nc4/c=";
   subPackages = [ "substreams" ];
+   installPhase = ''
+    mkdir -p $out/bin
+    cp bin/substreams $out/bin
+  '';
 
   meta = with lib; {
     homepage = "https://github.com/streamingfast/substreams";
