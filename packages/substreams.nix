@@ -20,8 +20,10 @@ buildGoModule {
     hash = "sha256-uognbqf0JfZoxG8MDdfqXiEPdKtyQ2rXbsaswBO9Uro=";
   };
 
+  modroot = "./cmd";
+
   vendorHash = "sha256-fpHv2RRW3wXsxUiferjZ5c31dQPGd/8gqGDXr/Nc4/c=";
-  subPackages = [ "cmd/substreams" ];
+  subPackages = [ "substreams" ];
 
   meta = with lib; {
     homepage = "https://github.com/streamingfast/substreams";
