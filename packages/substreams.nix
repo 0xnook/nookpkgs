@@ -30,5 +30,6 @@ buildGoModule {
     description = "TODO";
     license = licenses.asl20;
     maintainers = with maintainers; [ nook ];
+    mainProgram = "substreams"
   };
 }
