@@ -15,10 +15,10 @@ buildGoModule {
     owner = "streamingfast";
     repo = "substreams";
     rev = "v${version}";
-    hash = lib.fakehash;
+    hash = "sha256-uognbqf0JfZoxG8MDdfqXiEPdKtyQ2rXbsaswBO9Uro=";
   };
 
-  vendorSha256 = "sha256-mLdAaYkQH2RHcZft27rDW1AoFCWKiUZhh2F0DpqZELw=";
+  vendorHash = "sha256-fpHv2RRW3wXsxUiferjZ5c31dQPGd/8gqGDXr/Nc4/c=";
 
   meta = with lib; {
     homepage = "https://github.com/streamingfast/substreams";
