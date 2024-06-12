@@ -1,16 +1,9 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, buildGoModule
-}:
+{ lib, stdenv, fetchFromGitHub, buildGoModule }:
 
-let
-  version = "1.7.3";
-in
-buildGoModule {
+let version = "1.7.3";
+in buildGoModule {
   pname = "substreams";
   inherit version;
-  # goPackagePath = "github.com/streamingfast/substreams";
 
   src = fetchFromGitHub {
     owner = "streamingfast";
