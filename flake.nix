@@ -14,7 +14,7 @@
     };
   in
   {
-    packages.${system} = pkgs.nookpkgs;
+    packages.${system}.default = pkgs.nookpkgs.substreams;
     overlays.default = import ./packages/overlay.nix;
   };
 }
