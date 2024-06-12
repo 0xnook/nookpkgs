@@ -23,6 +23,7 @@ buildGoModule {
   modroot = "./cmd";
 
   vendorHash = "sha256-fpHv2RRW3wXsxUiferjZ5c31dQPGd/8gqGDXr/Nc4/c=";
+
   subPackages = [ "substreams" ];
    installPhase = ''
     mkdir -p $out/bin
@@ -34,6 +35,6 @@ buildGoModule {
     description = "TODO";
     license = licenses.asl20;
     maintainers = with maintainers; [ nook ];
-    mainProgram = "substreams"
+    mainProgram = "substreams";
   };
 }
